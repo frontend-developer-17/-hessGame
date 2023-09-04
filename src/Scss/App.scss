@@ -1,0 +1,115 @@
+/* The following line can be included in a src/App.scss */
+@import '~bootstrap/scss/bootstrap';
+
+.App {
+  
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 5px;
+background-image:url(../assets/forester.jpg) ;
+background-size: cover;
+}
+
+.wrapper{
+  display: flex;
+}
+.board{
+  width: calc(80px*8);
+  height: calc(80px*8);
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+
+flex-wrap: wrap;}
+.cell{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+img{
+  width: 60px;
+  
+}
+}
+.black{
+  background-color:orange;
+}
+.white{
+  background-color:rgb(76, 189, 144)
+}
+.active{
+  background-color: brown;
+}
+.avalibel{
+
+    width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: green;
+}
+
+.menu{
+  width: 300px;
+   margin-left: 50px;
+   background-color: bisque;
+   border:2px solid rgb(194, 162, 162);
+   text-align: center;
+   border-radius: 12px;
+   &_hod{
+   border-bottom: 1px solid rgb(170, 80, 80);
+   }
+   &_eatenFigure{
+    
+display: flex;  
+justify-content: center;
+align-items: center;
+margin: 5px; 
+padding: 10px;
+
+&_blokBlack{
+  background-color: beige;
+  border-radius: 12px;
+}
+&_blokWhite{
+  background-color:    rgb(198, 202, 202);
+  border-radius: 12px;
+
+}
+&_count{
+  margin: 5px 0 0 6px;
+  background-color: rgba(151, 122, 179, 0.116);
+  padding: 4px;
+  text-align: center;
+  color: rgb(97, 133, 74);
+  border: 1px solid rgb(158, 131, 131);
+  border-radius: 20px;
+}
+&_button{
+  margin: 10px 0 0 10px;
+}
+
+}
+}
+
+.modalEatenFigure{
+ background-color: rgb(173, 173, 173);
+ border: 1px solid rgb(152, 179, 122);
+
+ display: flex;
+ justify-content: center;
+ &_figur{
+  padding: 3px;
+  margin:15px 20px ;
+ &_logo{
+ width: 60px;
+ margin-left: 15px;
+}
+
+
+ }
+}
+
+
