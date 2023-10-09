@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { BoardTS, IMoveFigure } from "../../Common/types/boardTS";
 
 export interface ColorCell {
-  board: [];
+  board: BoardTS[][];
+  walkingFigure:string
 }
 
-const initialState: any = {
-  board: [],
+const initialState: ColorCell = {
+  board:  [] as BoardTS[][] ,
   walkingFigure:"white"
 };
 
@@ -14,45 +16,52 @@ export const cellSlice = createSlice({
   name: "cell",
   initialState,
   reducers: {
-    addCell: (state, action: PayloadAction<any>) => {
+    addCell: (state, action: PayloadAction<BoardTS[][]>) => {
       debugger
      state.board = action.payload;
     },
-    moveFigure: (state, action: PayloadAction<any>) => {
+    moveFigure: (state, action: PayloadAction<IMoveFigure>) => {
       let currentFigure =state.board[action.payload.selectedFigur.x][action.payload.selectedFigur.y];
-      state.board[action.payload.selected.x][action.payload.selected.y].figure = null;
+        state.board[action.payload.currentFigure.x][action.payload.currentFigure.y].figure = null;
+
         debugger
       currentFigure.count = true;
 
 
-      currentFigure.figure = action.payload.selected.figure;
+      currentFigure.figure = action.payload.currentFigure.figure;
 
 
     },
 
     reverseMove:(state,action)=>{
-      debugger
-
-     state.board[action.payload.x][action.payload.y]=action.payload
+       state.board[action.payload.x][action.payload.y]=action.payload
     },
 
     
 
     eatKing:(state,action)=>{
-      
-     debugger
-state.board[action.payload.x][action.payload.y].figure.activeEat=true
+      let figure = state.board[action.payload.x][action.payload.y].figure
+      if (figure) {
+        figure.activeEat=true
+
+      }
+    
     },
     king:(state,action)=>{
-     state.board[action.payload.x][action.payload.y].figure.activeEat=false
+      let figure = state.board[action.payload.x][action.payload.y].figure
+      if (figure) {
+        figure.activeEat=false
 
+      }
     },
 
     
-    activeAvalibel:(state,action)=>{
+    activeAvalibel:(state,action:PayloadAction<{x:number,y:number}>)=>{
+      debugger
 state.board[action.payload.x][action.payload.y].avalibel=true
     },
-    disableAvalibel: (state, action) => {
+    disableAvalibel: (state, action:PayloadAction<{i:number,j:number}>) => {
+      debugger
      state.board[action.payload.i][action.payload.j].avalibel = false;
     },
 
